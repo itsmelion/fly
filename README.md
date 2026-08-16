@@ -3,9 +3,9 @@
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
 A production-ready monorepo starter for teams who want App Router, shared UI libraries, and Nx superpowers without the setup tax.
-<!-- BEGIN: nx-cloud -->
-🚀 If you haven't connected to Nx Cloud yet, [complete your setup here](https://cloud.nx.app/get-started). Get faster builds with remote caching, distributed task execution, and self-healing CI. [See how your workspace can benefit](#nx-cloud).
-<!-- END: nx-cloud -->
+## Finish your Nx platform setup
+
+🚀 [Finish setting up your workspace](https://cloud.nx.app/connect/Pfm35fepNk) to get faster builds with remote caching, distributed task execution, and self-healing CI. [Learn more about Nx Cloud](https://nx.dev/ci/intro/why-nx-cloud).
 
 ## Quick Start
 
