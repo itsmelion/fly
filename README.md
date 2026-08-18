@@ -25,22 +25,22 @@ npm install
 
 ### Common commands
 
-| Task | Command |
-|------|---------|
-| Start dev server | `npx nx run @nextjs-template/web:dev` |
-| Build all projects | `npx nx run-many -t build` |
-| Run all tests | `npx nx run-many -t test` |
-| Run affected tests | `npx nx affected -t test` |
-| Lint affected | `npx nx affected -t lint` |
-| View project graph | `npx nx graph` |
-| E2E tests | `npx nx run @nextjs-template/web-e2e:e2e` |
+| Task               | Command                       |
+| ------------------ | ----------------------------- |
+| Start dev server   | `npx nx run @fly/web:dev`     |
+| Build all projects | `npx nx run-many -t build`    |
+| Run all tests      | `npx nx run-many -t test`     |
+| Run affected tests | `npx nx affected -t test`     |
+| Lint affected      | `npx nx affected -t lint`     |
+| View project graph | `npx nx graph`                |
+| E2E tests          | `npx nx run @fly/web-e2e:e2e` |
 
 ---
 
 ## What's inside
 
 ```
-nextjs-template/
+fly/
 - apps/
   - web/          Next.js 16 App Router application (scope:web)
   - web-e2e/      Playwright end-to-end tests
@@ -63,11 +63,11 @@ nextjs-template/
 
 ### Computation caching
 
-Every task result is cached locally. Running `npx nx run @nextjs-template/web:build` a second time takes milliseconds.
+Every task result is cached locally. Running `npx nx run @fly/web:build` a second time takes milliseconds.
 
 ```sh
-npx nx run @nextjs-template/web:build        # first run: compiles
-npx nx run @nextjs-template/web:build        # second run: instant (cache hit)
+npx nx run @fly/web:build        # first run: compiles
+npx nx run @fly/web:build        # second run: instant (cache hit)
 ```
 
 ### Affected commands

@@ -1,15 +1,12 @@
-import nextEslintPluginNext from "@next/eslint-plugin-next";
-import nx from "@nx/eslint-plugin";
-import baseConfig from "../../eslint.config.mjs";
+import { jestConfig, nextConfig } from '@fly/eslint-config';
+
+import baseConfig from '../../eslint.config.mjs';
 
 export default [
-    { plugins: { "@next/next": nextEslintPluginNext } },
-    ...nx.configs["flat/react-typescript"],
-    ...baseConfig,
-    {
-        ignores: [
-            ".next/**/*",
-            "**/out-tsc"
-        ]
-    }
+  ...baseConfig,
+  ...nextConfig,
+  ...jestConfig,
+  {
+    ignores: ['.next/**/*', '**/out-tsc'],
+  },
 ];

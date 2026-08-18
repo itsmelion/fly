@@ -1,7 +1,7 @@
-# @nextjs-template/ui
+# @fly/ui
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test @nextjs-template/ui` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test @fly/ui` to execute the unit tests via [Jest](https://jestjs.io).

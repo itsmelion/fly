@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: '@nextjs-template/ui',
+  displayName: '@fly/ui',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
