@@ -11,6 +11,9 @@
     },
     "./package.json": "./package.json"
   },
+  "dependencies": {
+    "tailwind-merge": "^1.14.0"
+  },
   "nx": {
     "tags": [
       "scope:shared"

@@ -7,7 +7,12 @@ export interface HeroBannerProps {
   ctaLabel: string;
 }
 
-export function HeroBanner({ title, subtitle, ctaHref, ctaLabel }: HeroBannerProps) {
+export function HeroBanner({
+  title,
+  subtitle,
+  ctaHref,
+  ctaLabel,
+}: HeroBannerProps) {
   return (
     <section className={styles.hero}>
       <div className={styles.badge}>Nx + Next.js Starter</div>
@@ -16,8 +21,8 @@ export function HeroBanner({ title, subtitle, ctaHref, ctaLabel }: HeroBannerPro
       <a href={ctaHref} target="_blank" rel="noreferrer" className={styles.cta}>
         {ctaLabel}
       </a>
+
+      <div className={'bg-blue-500 h-64 w-128'}>iets</div>
     </section>
   );
 }
-
-export default HeroBanner;

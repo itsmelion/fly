@@ -10,7 +10,8 @@
   },
   "devDependencies": {
     "@fly/eslint-config": "*",
-    "@testing-library/react": "*"
+    "@testing-library/react": "*",
+    "tailwind-merge": "*"
   },
   "nx": {
     "tags": [
