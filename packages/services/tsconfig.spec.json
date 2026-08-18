@@ -2,21 +2,15 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/jest",
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "jsx": "react-jsx",
     "types": [
-      "node",
-      "@nx/react/typings/react.d.ts",
       "jest",
+      "node",
       "react",
       "react-dom",
       "react-query",
       "express"
-    ],
+    ]
   },
   "include": [
     "jest.config.ts",
@@ -33,7 +27,7 @@
   ],
   "references": [
     {
-      "path": "./tsconfig.json"
+      "path": "./tsconfig.lib.json"
     }
   ]
 }

@@ -1,7 +1,7 @@
-import QueryProvider from '@/services/query-provider';
 import './global.css';
 import { type Metadata } from 'next';
 import { type ReactNode } from 'react';
+import { darkModeInit, QueryProvider } from '@fly/services';
 
 export const metadata: Metadata = {
   title: 'Welcome to ',
@@ -10,7 +10,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: darkModeInit }} />
+      </head>
+
       <body>
         <QueryProvider>
           {children}

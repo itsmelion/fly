@@ -1990,6 +1990,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fly/services@npm:*, @fly/services@workspace:packages/services":
+  version: 0.0.0-use.local
+  resolution: "@fly/services@workspace:packages/services"
+  dependencies:
+    "@tanstack/react-query": "npm:*"
+  languageName: unknown
+  linkType: soft
+
 "@fly/source@workspace:.":
   version: 0.0.0-use.local
   resolution: "@fly/source@workspace:."
@@ -2079,6 +2087,7 @@ __metadata:
   resolution: "@fly/web@workspace:apps/web"
   dependencies:
     "@fly/eslint-config": "npm:*"
+    "@fly/services": "npm:*"
     "@fly/ui": "npm:*"
     "@testing-library/react": "npm:*"
     next: "npm:~16.2.10"
@@ -5447,7 +5456,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.101.4":
+"@tanstack/react-query@npm:*, @tanstack/react-query@npm:^5.101.4":
   version: 5.101.4
   resolution: "@tanstack/react-query@npm:5.101.4"
   dependencies:

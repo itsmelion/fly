@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/jest",
-    "jsx": "preserve",
+    "outDir": "dist",
     "lib": [
       "dom",
       "dom.iterable",
@@ -17,23 +16,28 @@
       "react-query",
       "express"
     ],
+    "rootDir": "src",
+    "jsx": "react-jsx",
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
   },
-  "include": [
+  "exclude": [
+    "out-tsc",
+    "dist",
     "jest.config.ts",
     "jest.config.cts",
-    "src/**/*.test.ts",
     "src/**/*.spec.ts",
-    "src/**/*.test.tsx",
+    "src/**/*.test.ts",
     "src/**/*.spec.tsx",
-    "src/**/*.test.js",
+    "src/**/*.test.tsx",
     "src/**/*.spec.js",
-    "src/**/*.test.jsx",
+    "src/**/*.test.js",
     "src/**/*.spec.jsx",
-    "src/**/*.d.ts"
+    "src/**/*.test.jsx"
   ],
-  "references": [
-    {
-      "path": "./tsconfig.json"
-    }
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }

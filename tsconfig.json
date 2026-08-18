@@ -14,6 +14,9 @@
     },
     {
       "path": "./packages/eslint-config"
+    },
+    {
+      "path": "./packages/services"
     }
   ]
 }

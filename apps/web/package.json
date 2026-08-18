@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@fly/services": "*",
     "@fly/ui": "*",
     "next": "~16.2.10",
     "react": "^19.0.0",

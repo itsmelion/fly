@@ -4,7 +4,7 @@ import styles from './page.module.css';
 
 export default function Page() {
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} container m-auto`}>
       <HeroBanner
         title="Welcome to Fly"
         subtitle="Build and deploy your applications with ease."
