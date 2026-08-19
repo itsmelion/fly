@@ -2,9 +2,12 @@
 
 import { DayPicker } from '@daypicker/react';
 import { twMerge } from 'tailwind-merge';
-import '@daypicker/react/style.css'
+import '@daypicker/react/style.css';
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker> & { mode?: 'single' | 'multiple' | 'range' };
+export type CalendarProps = React.ComponentProps<typeof DayPicker> & {
+  mode?: 'single' | 'multiple' | 'range';
+  required?: boolean;
+};
 
 export function Calendar({
   className,

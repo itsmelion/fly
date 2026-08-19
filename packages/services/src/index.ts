@@ -3,3 +3,4 @@ export * from './lib/dark-mode/dark-mode-toggle';
 export * from './lib/query-provider/query-provider';
 export * from './lib/query-provider/query-settings';
 export * from './lib/flights/useAirports';
+export * from './lib/flights/useFlightListings';

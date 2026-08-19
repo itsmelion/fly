@@ -17,11 +17,11 @@ export interface DatePickerProps {
   className?: string;
   info?: string;
   error?: string;
-  mode: CalendarProps['mode'];
+  mode?: CalendarProps['mode'];
 }
 
 const dateFormatter = new Intl.DateTimeFormat(undefined, {
-  month: 'long',
+  month: 'short',
   day: 'numeric',
   year: 'numeric',
 });
@@ -41,41 +41,41 @@ export function DatePicker({
   return (
     <fieldset className={twMerge('relative contents', className)}>
       <div>
-      <Label htmlFor={id}>{label}</Label>
+        <Label htmlFor={id}>{label}</Label>
 
-      {info && <p className="mt-1 text-sm text-gray-500">{info}</p>}
+        {info && <p className="mt-1 text-sm text-gray-500">{info}</p>}
 
-      <PopoverPrimitive.Root>
-        <PopoverPrimitive.Trigger asChild>
-          <button
-            id={id}
-            type="button"
-            disabled={disabled}
-            className={twMerge(
-              'flex h-10 w-full items-center justify-start min-w-48 rounded-md border border-gray-300 bg-white px-3 py-2 text-left text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50',
-              !date && 'text-gray-500'
-            )}
-          >
-            <CalendarIcon className="mr-2 h-4 w-4 text-gray-500" />
-            {date ? dateFormatter.format(date) : placeholder}
-          </button>
-        </PopoverPrimitive.Trigger>
-        <PopoverPrimitive.Portal>
-          <PopoverPrimitive.Content
-            align="start"
-            className="z-50 rounded-md border border-gray-200 bg-white p-0 text-gray-950 shadow-md outline-none"
-          >
-            <Calendar
-              mode={mode}
-              numberOfMonths={2}
-              selected={date}
-              onSelect={onDateChange}
-            />
-          </PopoverPrimitive.Content>
-        </PopoverPrimitive.Portal>
-      </PopoverPrimitive.Root>
+        <PopoverPrimitive.Root>
+          <PopoverPrimitive.Trigger asChild>
+            <button
+              id={id}
+              type="button"
+              disabled={disabled}
+              className={twMerge(
+                'flex h-10 w-full min-w-48 items-center justify-start rounded-md border border-gray-300 bg-transparent px-3 py-2 text-left text-sm text-current shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+              )}
+            >
+              <CalendarIcon className="mr-2 h-4 w-4 text-current" />
+              {date ? dateFormatter.format(date) : placeholder}
+            </button>
+          </PopoverPrimitive.Trigger>
 
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+          <PopoverPrimitive.Portal>
+            <PopoverPrimitive.Content
+              align="start"
+              className="z-50 rounded-md border border-gray-200 bg-white p-0 text-gray-950 shadow-md outline-none"
+            >
+              <Calendar
+                mode={mode as 'single'}
+                numberOfMonths={2}
+                selected={date}
+                onSelect={onDateChange}
+              />
+            </PopoverPrimitive.Content>
+          </PopoverPrimitive.Portal>
+        </PopoverPrimitive.Root>
+
+        {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
       </div>
     </fieldset>
   );
