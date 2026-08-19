@@ -1,18 +1,9 @@
-import { HeroBanner, Input } from '@fly/ui';
-
-import styles from './page.module.css';
+import { FlightSearch } from '@fly/ui';
 
 export default function Page() {
   return (
-    <div className={`${styles.page} container m-auto`}>
-      <HeroBanner
-        title="Welcome to Fly"
-        subtitle="Build and deploy your applications with ease."
-        ctaLabel="Get Started"
-        ctaHref="/get-started"
-      />
-
-      <Input id="username" label="Username" placeholder="Enter your username" />
+    <div className="container m-auto">
+      <FlightSearch />
     </div>
   );
 }

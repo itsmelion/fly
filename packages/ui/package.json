@@ -12,7 +12,15 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "tailwind-merge": "^1.14.0"
+    "@daypicker/react": "*",
+    "@fly/services": "*",
+    "@radix-ui/react-popover": "*",
+    "@radix-ui/react-select": "*",
+    "lucide-react": "*",
+    "next": "*",
+    "react": "*",
+    "tailwind-merge": "*",
+    "react-hook-form": "*"
   },
   "nx": {
     "tags": [
