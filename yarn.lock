@@ -1995,6 +1995,8 @@ __metadata:
   resolution: "@fly/services@workspace:packages/services"
   dependencies:
     "@tanstack/react-query": "npm:*"
+    "@tanstack/react-query-devtools": "npm:*"
+    react: "npm:*"
   languageName: unknown
   linkType: soft
 
@@ -2052,7 +2054,6 @@ __metadata:
     jest-util: "npm:~30.3.0"
     motion: "npm:^11.18.2"
     nx: "npm:23.1.1"
-    postcss: "npm:^8.5.9"
     prettier: "npm:~3.6.2"
     prettier-plugin-tailwindcss: "npm:^0.7.3"
     react: "npm:^19.0.0"
@@ -5444,7 +5445,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.101.4":
+"@tanstack/react-query-devtools@npm:*, @tanstack/react-query-devtools@npm:^5.101.4":
   version: 5.101.4
   resolution: "@tanstack/react-query-devtools@npm:5.101.4"
   dependencies:
@@ -14813,7 +14814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.33, postcss@npm:^8.4.38, postcss@npm:^8.4.40, postcss@npm:^8.5.16, postcss@npm:^8.5.9":
+"postcss@npm:^8.4.33, postcss@npm:^8.4.38, postcss@npm:^8.4.40, postcss@npm:^8.5.16":
   version: 8.5.26
   resolution: "postcss@npm:8.5.26"
   dependencies:
@@ -15106,7 +15107,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react@npm:^19.0.0":
+"react@npm:*, react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react@npm:^19.0.0":
   version: 19.2.8
   resolution: "react@npm:19.2.8"
   checksum: 10c0/5f86bdb56426652fd6d989d30a6f2e603c057272c47c9ca3a3fbe190a3a39ee9ccce937d63cfc039717abed1b8891d6a499134bc35311acc07eafdacd86537cd
