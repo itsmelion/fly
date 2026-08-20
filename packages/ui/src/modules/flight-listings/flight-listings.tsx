@@ -8,8 +8,8 @@ import {
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { useEffect, useMemo, useRef } from 'react';
 
-import { formatPrice, dateTimeFormatter } from './helpers/formatters';
-import { Button } from '../../lib/button/button';
+import { FlightOffer } from '../../lib/flight-offer/flight-offer';
+import { FlightOfferCard } from '../../lib/flight-offer/flight-offer-card';
 import { ErrorPanel } from '../../lib/panels/error-panel';
 import { InfoPanel } from '../../lib/panels/info-panel';
 
@@ -124,57 +124,17 @@ export function FlightListings({ search }: FlightSearchProps) {
             if (!flight) return null;
 
             return (
-              <article
+              <FlightOfferCard
                 key={flight.outboundFlight.id}
-                ref={rowVirtualizer.measureElement}
-                data-index={virtualItem.index}
-                className="absolute top-0 left-0 grid w-full gap-4 rounded-md border border-gray-300 bg-white p-4 text-gray-950 shadow-sm md:grid-cols-[1fr_auto] dark:border-gray-700 dark:bg-gray-800 dark:text-white/82"
-                style={{ transform: `translateY(${virtualItem.start}px)` }}
+                index={virtualItem.index}
+                measureElement={rowVirtualizer.measureElement}
+                start={virtualItem.start}
               >
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">
-                    {airportByCode.get(
-                      flight.outboundFlight.departureAirport.locationCode,
-                    ) ??
-                      flight.outboundFlight.departureAirport.locationCode}
-                      {' to '}
-                    {airportByCode.get(
-                      flight.outboundFlight.arrivalAirport.locationCode,
-                    ) ?? flight.outboundFlight.arrivalAirport.locationCode}
-                  </h3>
-
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {dateTimeFormatter.format(
-                      new Date(flight.outboundFlight.departureDateTime),
-                    )}
-                    {' - '}
-                    {dateTimeFormatter.format(
-                      new Date(flight.outboundFlight.arrivalDateTime),
-                    )}
-                  </p>
-
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {flight.outboundFlight.marketingAirline.companyShortName}
-                    {' '}
-                    {flight.outboundFlight.flightNumber}
-                    {' - '}
-                    {flight.pricingInfoSum.productClass}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between gap-4 md:flex-col md:items-end">
-                  <p className="text-xl font-semibold">
-                    {formatPrice(
-                      flight.pricingInfoSum.totalPriceAllPassengers,
-                      flight.pricingInfoSum.currencyCode,
-                    )}
-                  </p>
-
-                  <a href={flight.deeplink.href} aria-label={`View flight details`}>
-                    <Button asDiv title='View' />
-                  </a>
-                </div>
-              </article>
+                <FlightOffer
+                  flight={flight}
+                  getAirportLabel={(code) => airportByCode.get(code)}
+                />
+              </FlightOfferCard>
             );
           })}
         </div>

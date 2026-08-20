@@ -1,5 +1,7 @@
 export * from './lib/button/button';
 export * from './lib/calendar/calendar-wrapper';
+export * from './lib/flight-offer/flight-offer';
+export * from './lib/flight-offer/flight-offer-card';
 export * from './lib/inputs/date-picker/date-picker';
 export * from './lib/inputs/input/input';
 export * from './lib/inputs/label/label';

@@ -20,9 +20,8 @@ describe('Panels', () => {
       <ErrorPanel>We could not load matching flights.</ErrorPanel>,
     );
 
-    expect(screen.getByRole('alert').textContent).toBe(
-      'We could not load matching flights.',
-    );
+    expect(screen.getByRole('alert')).toBeTruthy();
+    expect(screen.getByText('We could not load matching flights.')).toBeTruthy();
     expect(asFragment()).toMatchSnapshot();
   });
 });

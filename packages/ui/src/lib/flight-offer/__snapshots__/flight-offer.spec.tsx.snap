@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`FlightOffer renders friendly airport names and total price 1`] = `
+<DocumentFragment>
+  <div
+    class="space-y-2"
+  >
+    <h3
+      class="text-lg font-semibold"
+    >
+      Amsterdam (Schiphol) (AMS) to Funchal (FNC)
+    </h3>
+    <p
+      class="text-sm text-gray-600 dark:text-gray-300"
+    >
+      Nov 10, 2022, 6:25 AM - Nov 10, 2022, 9:35 AM
+    </p>
+    <p
+      class="text-sm text-gray-600 dark:text-gray-300"
+    >
+      HV 6629 - Basic
+    </p>
+  </div>
+  <div
+    class="flex items-center justify-between gap-4 md:flex-col md:items-end"
+  >
+    <p
+      class="text-xl font-semibold"
+    >
+      €58.70
+    </p>
+    <a
+      aria-label="View flight details"
+      href="https://www.transavia.com/"
+    >
+      <div
+        class="inline-flex h-10 items-center justify-center rounded-md bg-emerald-600 px-5 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+        type="button"
+      >
+        View
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;

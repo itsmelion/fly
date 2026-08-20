@@ -15,7 +15,8 @@ describe('Form info labels', () => {
   it('renders error feedback as an alert', () => {
     const { asFragment } = render(<Form.Error>Origin is required.</Form.Error>);
 
-    expect(screen.getByRole('alert').textContent).toBe('Origin is required.');
+    expect(screen.getByRole('alert')).toBeTruthy();
+    expect(screen.getByText('Origin is required.')).toBeTruthy();
     expect(asFragment()).toMatchSnapshot();
   });
 });
