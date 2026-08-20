@@ -4,6 +4,8 @@ Available on:
 - Web app: [chrisfly.netlify.app](https://chrisfly.netlify.app)
 - Storybook: [chrisflystorybook.netlify.app](https://chrisflystorybook.netlify.app)
 
+Ported my old personal eslint rules from [eslint-config-lion](https://www.npmjs.com/package/eslint-config-lion)
+
 ## Quick Start
 
 ```sh
