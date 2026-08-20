@@ -4,5 +4,6 @@ publish = "dist/storybook/ui"
 
 [build.environment]
 COREPACK_ENABLE_DOWNLOAD_PROMPT = "0"
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
 NODE_VERSION = "24"
 YARN_NODE_LINKER = "node-modules"
