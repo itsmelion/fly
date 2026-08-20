@@ -1,0 +1,8 @@
+[build]
+command = "corepack yarn nx run @fly/ui:build-storybook"
+publish = "dist/storybook/ui"
+
+[build.environment]
+COREPACK_ENABLE_DOWNLOAD_PROMPT = "0"
+NODE_VERSION = "24"
+YARN_NODE_LINKER = "node-modules"

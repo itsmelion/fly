@@ -2118,6 +2118,7 @@ __metadata:
     jest-util: "npm:~30.3.0"
     lucide-react: "npm:^1"
     motion: "npm:^13.1.0"
+    next: "npm:^16.3.1"
     nx: "npm:23.1.1"
     postcss: "npm:^8.5.26"
     prettier: "npm:~3.6.2"
@@ -2165,7 +2166,8 @@ __metadata:
   resolution: "@fly/web-e2e@workspace:apps/web-e2e"
   dependencies:
     "@fly/web": "npm:*"
-    "@playwright/test": "npm:^1.42.0"
+    "@nx/devkit": "npm:*"
+    "@playwright/test": "npm:*"
   languageName: unknown
   linkType: soft
 
@@ -3573,7 +3575,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx/devkit@npm:23.1.1":
+"@nx/devkit@npm:*, @nx/devkit@npm:23.1.1":
   version: 23.1.1
   resolution: "@nx/devkit@npm:23.1.1"
   dependencies:
@@ -4517,7 +4519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.42.0, @playwright/test@npm:^1.62.1":
+"@playwright/test@npm:*, @playwright/test@npm:^1.62.1":
   version: 1.62.1
   resolution: "@playwright/test@npm:1.62.1"
   dependencies:
@@ -13895,7 +13897,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:*":
+"next@npm:*, next@npm:^16.3.1":
   version: 16.3.1
   resolution: "next@npm:16.3.1"
   dependencies:

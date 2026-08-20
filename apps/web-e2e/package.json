@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@fly/web": "*",
-    "@playwright/test": "^1.42.0"
+    "@playwright/test": "*"
+  },
+  "devDependencies": {
+    "@nx/devkit": "*"
   }
 }
