@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Input associates its label, info, error, and control 1`] = `
+<DocumentFragment>
+  <fieldset
+    class="relative contents"
+  >
+    <label
+      class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block mb-2"
+      for="origin"
+    >
+      Origin
+    </label>
+    <p
+      class="mt-1 text-sm text-gray-500"
+    >
+      Use the airport code when you know it.
+    </p>
+    <div
+      class="contents"
+    >
+      <input
+        class="block w-full border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2 rounded-md"
+        error="Origin is required."
+        id="origin"
+        info="Use the airport code when you know it."
+        label="Origin"
+        placeholder="Airport or city"
+      />
+    </div>
+    <p
+      class="mt-1 text-sm text-red-600"
+    >
+      Origin is required.
+    </p>
+  </fieldset>
+</DocumentFragment>
+`;

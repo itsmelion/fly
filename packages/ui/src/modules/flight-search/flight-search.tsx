@@ -1,7 +1,7 @@
 'use client';
-import { useAirports } from '@fly/services';
-import { useState } from 'react';
-import { SubmitHandler, Controller, useForm } from 'react-hook-form';
+import { useAirports, type FlightListingsParams } from '@fly/services';
+import { useMemo, useState } from 'react';
+import { Controller, type SubmitHandler, useForm } from 'react-hook-form';
 
 import { DatePicker } from '../../lib/inputs/date-picker/date-picker';
 import { Label } from '../../lib/inputs/label/label';
@@ -10,118 +10,173 @@ import { FlightListings } from '../../modules/flight-search/flight-listings';
 
 type Inputs = {
   origin: string;
-  destination: string;
-  dates: Date | undefined;
+  destination: string | undefined;
+  departureDate: Date | undefined;
 };
 
+const minimumDepartureDate = new Date(2022, 10, 10);
+const maximumDepartureDate = new Date(2022, 10, 30);
+
+function formatDateForSearch(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
 export function FlightSearch() {
-  const { data: airports } = useAirports();
-  const { control, handleSubmit } = useForm<Inputs>();
-  const [values, setFormSubmission] = useState<Inputs | null>(null);
-  const onSubmit: SubmitHandler<Inputs> = (data) => setFormSubmission(data);
+  const { data: airports, isLoading: airportsAreLoading } = useAirports();
+  const { control, handleSubmit } = useForm<Inputs>({
+    defaultValues: {
+      origin: 'AMS',
+      destination: undefined,
+      departureDate: undefined,
+    },
+  });
+  const [search, setSearch] = useState<FlightListingsParams>();
+  const originAirports = useMemo(
+    () => airports?.filter((airport) => airport.ItemName === 'AMS') ?? [],
+    [airports],
+  );
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    if (!data.destination || !data.departureDate) {
+      return;
+    }
+
+    setSearch({
+      origin: data.origin,
+      destination: data.destination,
+      departureDate: formatDateForSearch(data.departureDate),
+    });
+  };
 
   return (
-    <main className="flex min-h-screen flex-col">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flight-search flex flex-row flex-wrap justify-center gap-6 p-4">
-          <Controller
-            name="origin"
-            control={control}
-            render={({ field, fieldState }) => (
-              <fieldset className="relative">
-                <Label htmlFor="origin">Origin</Label>
+    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-6 px-4 py-8">
+      <section className="rounded-md border border-gray-300 bg-white p-4 text-gray-950 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-50">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid items-end gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto]">
+            <Controller
+              name="origin"
+              control={control}
+              rules={{ required: 'Choose an origin.' }}
+              render={({ field, fieldState }) => (
+                <fieldset className="relative min-w-0">
+                  <Label htmlFor="origin">Origin</Label>
 
-                <Select.Root value={field.value} onValueChange={field.onChange}>
-                  <Select.Trigger
-                    id="origin"
-                    ref={field.ref}
-                    className="w-full max-w-48"
+                  <Select.Root
+                    value={field.value ?? ''}
+                    onValueChange={field.onChange}
+                    disabled={airportsAreLoading}
                   >
-                    <Select.Value placeholder="Origin" />
-                  </Select.Trigger>
+                    <Select.Trigger
+                      id="origin"
+                      ref={field.ref}
+                      className="w-full"
+                    >
+                      <Select.Value placeholder="Origin" />
+                    </Select.Trigger>
 
-                  <Select.Content>
-                    {airports?.map((airport) => (
-                      <Select.Item
-                        key={airport.ItemName}
-                        value={airport.ItemName}
-                      >
-                        {airport.AirportName} ({airport.ItemName})
-                      </Select.Item>
-                    ))}
-                  </Select.Content>
-                </Select.Root>
+                    <Select.Content>
+                      {originAirports.map((airport) => (
+                        <Select.Item
+                          key={airport.ItemName}
+                          value={airport.ItemName}
+                        >
+                          {airport.AirportName} ({airport.ItemName})
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Root>
 
-                {fieldState.error && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {fieldState.error.message}
-                  </p>
-                )}
-              </fieldset>
-            )}
-          />
+                  {fieldState.error && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {fieldState.error.message}
+                    </p>
+                  )}
+                </fieldset>
+              )}
+            />
 
-          <Controller
-            name="destination"
-            control={control}
-            render={({ field, fieldState }) => (
-              <fieldset className="relative">
-                <Label htmlFor="destination">Destination</Label>
+            <Controller
+              name="destination"
+              control={control}
+              rules={{ required: 'Choose a destination.' }}
+              render={({ field, fieldState }) => (
+                <fieldset className="relative min-w-0">
+                  <Label htmlFor="destination">Destination</Label>
 
-                <Select.Root value={field.value} onValueChange={field.onChange}>
-                  <Select.Trigger
-                    id="destination"
-                    ref={field.ref}
-                    className="w-full max-w-48"
+                  <Select.Root
+                    value={field.value ?? ''}
+                    onValueChange={field.onChange}
+                    disabled={airportsAreLoading}
                   >
-                    <Select.Value placeholder="Destination" />
-                  </Select.Trigger>
+                    <Select.Trigger
+                      id="destination"
+                      ref={field.ref}
+                      className="w-full"
+                    >
+                      <Select.Value placeholder="Destination" />
+                    </Select.Trigger>
 
-                  <Select.Content>
-                    {airports?.map((airport) => (
-                      <Select.Item
-                        key={airport.ItemName}
-                        value={airport.ItemName}
-                      >
-                        {airport.AirportName} ({airport.ItemName})
-                      </Select.Item>
-                    ))}
-                  </Select.Content>
-                </Select.Root>
+                    <Select.Content>
+                      {airports?.map((airport) => (
+                        <Select.Item
+                          key={airport.ItemName}
+                          value={airport.ItemName}
+                        >
+                          {airport.AirportName} ({airport.ItemName})
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Root>
 
-                {fieldState.error && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {fieldState.error.message}
-                  </p>
-                )}
-              </fieldset>
-            )}
-          />
+                  {fieldState.error && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {fieldState.error.message}
+                    </p>
+                  )}
+                </fieldset>
+              )}
+            />
 
-          <Controller
-            name="dates"
-            control={control}
-            render={({ field, fieldState }) => (
-              <DatePicker
-                id="dates"
-                label="Departure"
-                date={field.value}
-                onDateChange={field.onChange}
-                error={fieldState.error?.message}
-              />
-            )}
-          />
+            <Controller
+              name="departureDate"
+              control={control}
+              rules={{ required: 'Choose a departure date.' }}
+              render={({ field, fieldState }) => (
+                <DatePicker
+                  id="departureDate"
+                  label="Departure date"
+                  date={field.value}
+                  onDateChange={field.onChange}
+                  error={fieldState.error?.message}
+                  calendarProps={{
+                    defaultMonth: minimumDepartureDate,
+                    disabled: [
+                      { before: minimumDepartureDate },
+                      { after: maximumDepartureDate },
+                    ],
+                    startMonth: minimumDepartureDate,
+                    endMonth: maximumDepartureDate,
+                  }}
+                />
+              )}
+            />
 
-          <button
-            className="inline-flex items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-            type="submit"
-          >
-            Search Flights
-          </button>
-        </div>
-      </form>
+            <button
+              className="inline-flex h-10 items-center justify-center rounded-md bg-blue-600 px-5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+              type="submit"
+              disabled={airportsAreLoading}
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </section>
 
-      <FlightListings {...values} />
+      <FlightListings search={search} />
     </main>
   );
 }

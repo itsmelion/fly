@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Label renders an accessible label 1`] = `
+<DocumentFragment>
+  <label
+    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block mb-2"
+    for="destination"
+  >
+    Destination
+  </label>
+</DocumentFragment>
+`;

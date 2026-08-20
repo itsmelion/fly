@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-interface Airport {
+export interface Airport {
   ItemName: string;
   AirportName: string;
   Description: string;

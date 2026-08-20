@@ -18,6 +18,10 @@ export interface DatePickerProps {
   info?: string;
   error?: string;
   mode?: CalendarProps['mode'];
+  calendarProps?: Omit<
+    CalendarProps,
+    'mode' | 'numberOfMonths' | 'selected' | 'onSelect'
+  >;
 }
 
 const dateFormatter = new Intl.DateTimeFormat(undefined, {
@@ -37,6 +41,7 @@ export function DatePicker({
   info,
   error,
   mode = 'single',
+  calendarProps,
 }: DatePickerProps) {
   return (
     <fieldset className={twMerge('relative contents', className)}>
@@ -66,6 +71,7 @@ export function DatePicker({
               className="z-50 rounded-md border border-gray-200 bg-white p-0 text-gray-950 shadow-md outline-none"
             >
               <Calendar
+                {...calendarProps}
                 mode={mode as 'single'}
                 numberOfMonths={2}
                 selected={date}

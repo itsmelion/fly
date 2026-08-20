@@ -6,5 +6,9 @@
     "implicitDependencies": [
       "@fly/web"
     ]
+  },
+  "dependencies": {
+    "@fly/web": "*",
+    "@playwright/test": "^1.42.0"
   }
 }

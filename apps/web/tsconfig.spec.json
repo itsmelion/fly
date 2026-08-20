@@ -12,10 +12,6 @@
       "node",
       "@nx/react/typings/react.d.ts",
       "jest",
-      "react",
-      "react-dom",
-      "react-query",
-      "express"
     ],
   },
   "include": [

@@ -11,16 +11,29 @@
     },
     "./package.json": "./package.json"
   },
+  "scripts": {
+    "storybook": "storybook dev -p 6006 -c .storybook",
+    "build-storybook": "storybook build -c .storybook -o ../../dist/storybook/ui"
+  },
   "dependencies": {
     "@daypicker/react": "*",
     "@fly/services": "*",
     "@radix-ui/react-popover": "*",
     "@radix-ui/react-select": "*",
+    "@tanstack/react-virtual": "*",
     "lucide-react": "*",
     "next": "*",
     "react": "*",
-    "tailwind-merge": "*",
-    "react-hook-form": "*"
+    "react-hook-form": "*",
+    "tailwind-merge": "*"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "*",
+    "@storybook/addon-docs": "*",
+    "@storybook/addon-links": "*",
+    "@storybook/nextjs-vite": "*",
+    "@testing-library/react": "*",
+    "storybook": "*"
   },
   "nx": {
     "tags": [

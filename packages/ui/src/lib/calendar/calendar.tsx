@@ -18,7 +18,6 @@ export function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      disabled={{ from: new Date(2022, 11, 10), to: new Date(2022, 11, 30) }}
       className={twMerge('p-3', className)}
       classNames={{
         // months: 'flex flex-col gap-4 sm:flex-row',

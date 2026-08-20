@@ -12,8 +12,8 @@
   "devDependencies": {
     "@fly/eslint-config": "*",
     "@testing-library/react": "*",
-    "tailwind-merge": "*",
-    "react-hook-form": "*"
+    "react-hook-form": "*",
+    "tailwind-merge": "*"
   },
   "nx": {
     "tags": [
