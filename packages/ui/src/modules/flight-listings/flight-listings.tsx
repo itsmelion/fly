@@ -1,4 +1,5 @@
 'use client';
+
 import {
   useAirports,
   useFlightListings,
@@ -9,6 +10,8 @@ import { useEffect, useMemo, useRef } from 'react';
 
 import { formatPrice, dateTimeFormatter } from './helpers/formatters';
 import { Button } from '../../lib/button/button';
+import { ErrorPanel } from '../../lib/panels/error-panel';
+import { InfoPanel } from '../../lib/panels/info-panel';
 
 interface FlightSearchProps {
   search?: FlightListingsParams;
@@ -75,27 +78,25 @@ export function FlightListings({ search }: FlightSearchProps) {
 
   if (isLoading) {
     return (
-      <section className="rounded-md border border-gray-300 bg-white p-6 text-gray-950 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-50" role="status">
-        <p className="text-sm text-gray-600 dark:text-gray-300">
-          Finding flights...
-        </p>
-      </section>
+      <InfoPanel role="status">
+        Finding flights...
+      </InfoPanel>
     );
   }
 
   if (isError) {
     return (
-      <section role="alert" className="rounded-md border border-red-300 bg-white p-6 text-red-700 shadow-sm dark:border-red-700 dark:bg-gray-800 dark:text-red-300">
-        <p>Unable to load flight listings.</p>
-      </section>
+      <ErrorPanel role="alert">
+        Unable to load flight listings.
+      </ErrorPanel>
     );
   }
 
   if (flightListings.length === 0) {
     return (
-      <section className="rounded-md border border-gray-300 bg-white p-6 text-gray-950 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-50">
-        <h2 className="text-lg font-semibold">No flights found</h2>
-      </section>
+      <InfoPanel>
+        No flights found
+      </InfoPanel>
     );
   }
 
@@ -105,8 +106,7 @@ export function FlightListings({ search }: FlightSearchProps) {
         <h2 className="text-xl font-semibold">Available flights</h2>
         <p className="text-sm text-gray-600 dark:text-gray-300">
           {flightListings.length} result{flightListings.length === 1 ? '' : 's'}
-          {totalFlightCount > flightListings.length &&
-            ` of ${totalFlightCount}`}
+          {totalFlightCount > flightListings.length && ` of ${totalFlightCount}`}
         </p>
       </div>
 
@@ -128,7 +128,7 @@ export function FlightListings({ search }: FlightSearchProps) {
                 key={flight.outboundFlight.id}
                 ref={rowVirtualizer.measureElement}
                 data-index={virtualItem.index}
-                className="absolute top-0 left-0 grid w-full gap-4 rounded-md border border-gray-300 bg-white p-4 text-gray-950 shadow-sm md:grid-cols-[1fr_auto] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-50"
+                className="absolute top-0 left-0 grid w-full gap-4 rounded-md border border-gray-300 bg-white p-4 text-gray-950 shadow-sm md:grid-cols-[1fr_auto] dark:border-gray-700 dark:bg-gray-800 dark:text-white/82"
                 style={{ transform: `translateY(${virtualItem.start}px)` }}
               >
                 <div className="space-y-2">
@@ -146,15 +146,18 @@ export function FlightListings({ search }: FlightSearchProps) {
                   <p className="text-sm text-gray-600 dark:text-gray-300">
                     {dateTimeFormatter.format(
                       new Date(flight.outboundFlight.departureDateTime),
-                    )}{' '}
-                    -{' '}
+                    )}
+                    {' - '}
                     {dateTimeFormatter.format(
                       new Date(flight.outboundFlight.arrivalDateTime),
                     )}
                   </p>
+
                   <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {flight.outboundFlight.marketingAirline.companyShortName}{' '}
-                    {flight.outboundFlight.flightNumber} -{' '}
+                    {flight.outboundFlight.marketingAirline.companyShortName}
+                    {' '}
+                    {flight.outboundFlight.flightNumber}
+                    {' - '}
                     {flight.pricingInfoSum.productClass}
                   </p>
                 </div>
@@ -178,7 +181,7 @@ export function FlightListings({ search }: FlightSearchProps) {
       </div>
 
       {isFetchingNextPage && (
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="text-sm text-black/82 dark:text-white/82">
           Loading more flights...
         </p>
       )}

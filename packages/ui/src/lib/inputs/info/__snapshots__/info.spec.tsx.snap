@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Form info labels renders error feedback as an alert 1`] = `
+<DocumentFragment>
+  <p
+    class="text-sm text-red-600"
+    role="alert"
+  >
+    Origin is required.
+  </p>
+</DocumentFragment>
+`;
+
+exports[`Form info labels renders helper text 1`] = `
+<DocumentFragment>
+  <p
+    class="text-sm text-gray-500"
+  >
+    Use the airport code when you know it.
+  </p>
+</DocumentFragment>
+`;

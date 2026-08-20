@@ -13,14 +13,14 @@ exports[`DatePicker renders a labelled date trigger with a formatted date 1`] = 
         Departure date
       </label>
       <p
-        class="mt-1 text-sm text-gray-500"
+        class="text-sm text-gray-500 mt-1"
       >
         Choose the first day of travel.
       </p>
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="flex h-10 w-full min-w-48 items-center justify-start rounded-md border border-gray-300 bg-transparent px-3 py-2 text-left text-sm text-current shadow-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+        class="flex h-10 w-full min-w-48 items-center justify-start rounded-md border border-gray-300 bg-white px-3 py-2 text-left text-sm text-black shadow-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
         data-state="closed"
         id="departure-date"
         type="button"

@@ -5,6 +5,7 @@ import { CalendarIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { Calendar, CalendarProps } from '../../calendar/calendar-wrapper';
+import { Form } from '../info/info';
 import { Label } from '../label/label';
 
 export interface DatePickerProps {
@@ -48,7 +49,7 @@ export function DatePicker({
       <div>
         <Label htmlFor={id}>{label}</Label>
 
-        {info && <p className="mt-1 text-sm text-gray-500">{info}</p>}
+        {info && <Form.Info className="mt-1">{info}</Form.Info>}
 
         <PopoverPrimitive.Root>
           <PopoverPrimitive.Trigger asChild>
@@ -57,7 +58,7 @@ export function DatePicker({
               type="button"
               disabled={disabled}
               className={twMerge(
-                'flex h-10 w-full min-w-48 items-center justify-start rounded-md border border-gray-300 bg-transparent px-3 py-2 text-left text-sm text-current shadow-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+                'flex h-10 w-full min-w-48 items-center justify-start rounded-md border border-gray-300 bg-white px-3 py-2 text-left text-sm text-black shadow-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
               )}
             >
               <CalendarIcon className="mr-2 h-4 w-4 text-current" />
@@ -81,7 +82,7 @@ export function DatePicker({
           </PopoverPrimitive.Portal>
         </PopoverPrimitive.Root>
 
-        {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+        {error && <Form.Error className="mt-1">{error}</Form.Error>}
       </div>
     </fieldset>
   );
