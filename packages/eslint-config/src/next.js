@@ -1,10 +1,12 @@
 import nextPlugin from '@next/eslint-plugin-next';
 import nx from '@nx/eslint-plugin';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 import { reactConfig, reactPlugins } from './react.js';
 
 export const nextConfig = [
   ...nx.configs['flat/react-typescript'],
+  jsxA11y.flatConfigs.recommended,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {

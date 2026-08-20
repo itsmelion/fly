@@ -1,7 +1,7 @@
 import './global.css';
+import { darkModeInit, QueryProvider } from '@fly/services';
 import { type Metadata } from 'next';
 import { type ReactNode } from 'react';
-import { darkModeInit, QueryProvider } from '@fly/services';
 
 export const metadata: Metadata = {
   title: 'Welcome to ',

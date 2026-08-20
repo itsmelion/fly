@@ -1,5 +1,6 @@
 // src/react.js
 import nx from '@nx/eslint-plugin';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
@@ -7,11 +8,13 @@ import { base } from './base.js';
 export const reactPlugins = {
   react,
   'react-hooks': reactHooks,
+  'jsx-a11y': jsxA11y,
 };
 
 export const reactConfig = [
   ...base,
   ...nx.configs['flat/react-typescript'],
+  jsxA11y.flatConfigs.recommended,
   {
     files: ['**/*.tsx', '**/*.jsx'],
     plugins: reactPlugins,

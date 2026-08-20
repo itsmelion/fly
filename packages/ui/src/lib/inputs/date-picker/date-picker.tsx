@@ -57,7 +57,7 @@ export function DatePicker({
               type="button"
               disabled={disabled}
               className={twMerge(
-                'flex h-10 w-full min-w-48 items-center justify-start rounded-md border border-gray-300 bg-transparent px-3 py-2 text-left text-sm text-current shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+                'flex h-10 w-full min-w-48 items-center justify-start rounded-md border border-gray-300 bg-transparent px-3 py-2 text-left text-sm text-current shadow-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
               )}
             >
               <CalendarIcon className="mr-2 h-4 w-4 text-current" />

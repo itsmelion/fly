@@ -1,13 +1,15 @@
 'use client';
+
 import { useAirports, type FlightListingsParams } from '@fly/services';
 import { useMemo, useState } from 'react';
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form';
 
+import { formatDateForSearch } from './helpers/formatDate';
 import { Button } from '../../lib/button/button';
 import { DatePicker } from '../../lib/inputs/date-picker/date-picker';
 import { Label } from '../../lib/inputs/label/label';
 import { Select } from '../../lib/inputs/select/select';
-import { FlightListings } from '../../modules/flight-search/flight-listings';
+import { FlightListings } from '../flight-listings/flight-listings';
 
 type Inputs = {
   origin: string;
@@ -17,14 +19,6 @@ type Inputs = {
 
 const minimumDepartureDate = new Date(2022, 10, 10);
 const maximumDepartureDate = new Date(2022, 10, 30);
-
-function formatDateForSearch(date: Date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
-}
 
 export function FlightSearch() {
   const { data: airports, isLoading: airportsAreLoading } = useAirports();
@@ -92,7 +86,7 @@ export function FlightSearch() {
                   </Select.Root>
 
                   {fieldState.error && (
-                    <p className="mt-1 text-sm text-red-600">
+                    <p role='alert' className="mt-1 text-sm text-red-600">
                       {fieldState.error.message}
                     </p>
                   )}
@@ -134,7 +128,7 @@ export function FlightSearch() {
                   </Select.Root>
 
                   {fieldState.error && (
-                    <p className="mt-1 text-sm text-red-600">
+                    <p role='alert' className="mt-1 text-sm text-red-600">
                       {fieldState.error.message}
                     </p>
                   )}

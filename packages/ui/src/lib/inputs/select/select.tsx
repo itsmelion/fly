@@ -16,7 +16,7 @@ const Trigger = forwardRef<
   <Primitive.Trigger
     ref={ref}
     className={twMerge(
-      'flex h-10 w-full items-center min-w-48 justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-950 shadow-sm ring-offset-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
+      'flex h-10 w-full items-center min-w-48 justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-950 shadow-sm ring-offset-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
       className
     )}
     {...props}

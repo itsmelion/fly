@@ -7,20 +7,11 @@ import {
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { useEffect, useMemo, useRef } from 'react';
 
+import { formatPrice, dateTimeFormatter } from './helpers/formatters';
+import { Button } from '../../lib/button/button';
+
 interface FlightSearchProps {
   search?: FlightListingsParams;
-}
-
-const dateTimeFormatter = new Intl.DateTimeFormat(undefined, {
-  dateStyle: 'medium',
-  timeStyle: 'short',
-});
-
-function formatPrice(value: number, currency: string) {
-  return new Intl.NumberFormat(undefined, {
-    style: 'currency',
-    currency,
-  }).format(value);
 }
 
 export function FlightListings({ search }: FlightSearchProps) {
@@ -34,11 +25,14 @@ export function FlightListings({ search }: FlightSearchProps) {
     isLoading,
     isError,
   } = useFlightListings(search);
+
   const flightListings = useMemo(
     () => data?.pages.flatMap((page) => page.flightOffer) ?? [],
     [data],
   );
+
   const totalFlightCount = data?.pages[0]?.resultSet.count ?? 0;
+
   const airportByCode = useMemo(
     () =>
       new Map(
@@ -49,12 +43,14 @@ export function FlightListings({ search }: FlightSearchProps) {
       ),
     [airports],
   );
+
   const rowVirtualizer = useVirtualizer({
     count: flightListings.length,
     estimateSize: () => 156,
     getScrollElement: () => scrollParentRef.current,
     overscan: 4,
   });
+
   const virtualItems = rowVirtualizer.getVirtualItems();
   const lastVirtualItem = virtualItems.at(-1);
 
@@ -75,13 +71,11 @@ export function FlightListings({ search }: FlightSearchProps) {
     lastVirtualItem,
   ]);
 
-  if (!search) {
-    return null;
-  }
+  if (!search) return null;
 
   if (isLoading) {
     return (
-      <section className="rounded-md border border-gray-300 bg-white p-6 text-gray-950 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-50">
+      <section className="rounded-md border border-gray-300 bg-white p-6 text-gray-950 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-50" role="status">
         <p className="text-sm text-gray-600 dark:text-gray-300">
           Finding flights...
         </p>
@@ -91,7 +85,7 @@ export function FlightListings({ search }: FlightSearchProps) {
 
   if (isError) {
     return (
-      <section className="rounded-md border border-red-300 bg-white p-6 text-red-700 shadow-sm dark:border-red-700 dark:bg-gray-800 dark:text-red-300">
+      <section role="alert" className="rounded-md border border-red-300 bg-white p-6 text-red-700 shadow-sm dark:border-red-700 dark:bg-gray-800 dark:text-red-300">
         <p>Unable to load flight listings.</p>
       </section>
     );
@@ -118,7 +112,7 @@ export function FlightListings({ search }: FlightSearchProps) {
 
       <div
         ref={scrollParentRef}
-        className="h-[640px] overflow-auto rounded-md focus:outline-none"
+        className="h-160 overflow-auto rounded-md focus:outline-none"
       >
         <div
           className="relative w-full"
@@ -127,9 +121,7 @@ export function FlightListings({ search }: FlightSearchProps) {
           {virtualItems.map((virtualItem) => {
             const flight = flightListings[virtualItem.index];
 
-            if (!flight) {
-              return null;
-            }
+            if (!flight) return null;
 
             return (
               <article
@@ -144,12 +136,13 @@ export function FlightListings({ search }: FlightSearchProps) {
                     {airportByCode.get(
                       flight.outboundFlight.departureAirport.locationCode,
                     ) ??
-                      flight.outboundFlight.departureAirport.locationCode}{' '}
-                    to{' '}
+                      flight.outboundFlight.departureAirport.locationCode}
+                      {' to '}
                     {airportByCode.get(
                       flight.outboundFlight.arrivalAirport.locationCode,
                     ) ?? flight.outboundFlight.arrivalAirport.locationCode}
                   </h3>
+
                   <p className="text-sm text-gray-600 dark:text-gray-300">
                     {dateTimeFormatter.format(
                       new Date(flight.outboundFlight.departureDateTime),
@@ -173,11 +166,9 @@ export function FlightListings({ search }: FlightSearchProps) {
                       flight.pricingInfoSum.currencyCode,
                     )}
                   </p>
-                  <a
-                    href={flight.deeplink.href}
-                    className="inline-flex h-10 items-center justify-center rounded-md border border-blue-600 px-4 text-sm font-medium text-blue-700 hover:bg-blue-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:border-blue-400 dark:text-blue-300 dark:hover:bg-blue-950"
-                  >
-                    View
+
+                  <a href={flight.deeplink.href} aria-label={`View flight details`}>
+                    <Button asDiv title='View' />
                   </a>
                 </div>
               </article>

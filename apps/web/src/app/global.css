@@ -21,7 +21,7 @@ body {
   font-family: inherit;
   line-height: inherit;
   @apply m-0;
-  @apply bg-gray-200 text-gray-900 dark:bg-gray-900 dark:text-gray-100 halloween:bg-orange-900 halloween:text-orange-100;
+  @apply bg-emerald-200 text-black/82 dark:bg-gray-900 dark:text-white/82 halloween:bg-orange-900 halloween:text-orange-100;
 }
 h1,
 h2,
