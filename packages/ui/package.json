@@ -24,6 +24,7 @@
     "lucide-react": "*",
     "next": "*",
     "react": "*",
+    "react-error-boundary": "*",
     "react-hook-form": "*",
     "tailwind-merge": "*"
   },

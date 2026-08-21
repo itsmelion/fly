@@ -22,7 +22,7 @@ async function fetchFlightListings(
   return response.json() ?? null;
 }
 
-type FlightListingResponse = {
+export type FlightListingResponse = {
   resultSet: {
     count: number;
   };

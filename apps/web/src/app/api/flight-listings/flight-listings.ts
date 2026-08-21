@@ -1,6 +1,11 @@
-export const flightListings = {
+import type { FlightListingResponse } from '@fly/services';
+
+export const flightListings: FlightListingResponse = {
   resultSet: {
     count: 668,
+  },
+  pageInfo: {
+    nextCursor: null,
   },
   flightOffer: [
     {
